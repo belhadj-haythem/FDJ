@@ -30,8 +30,13 @@ export class FootballService {
     return this.http.get(`${this.uri}/lookup_all_teams.php`, { params });
   }
 
-  public getPlayersByTeamId(id_team: string): Observable<any> {
-    const params = new HttpParams().set('id', id_team);
+  public getPlayersByTeamId(idTeam: string): Observable<any> {
+    const params = new HttpParams().set('id', idTeam);
     return this.http.get(`${this.uri}/lookup_all_players.php`, { params });
+  }
+
+  public getPlayersByTeamName(name: string): Observable<any> {
+    const params = new HttpParams().set('t', name);
+    return this.http.get(`${this.uri}/searchplayers.php`, { params });
   }
 }

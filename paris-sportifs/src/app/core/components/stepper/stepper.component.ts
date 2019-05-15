@@ -14,6 +14,7 @@ export class StepperComponent implements OnInit {
   @Input() listFirstStep: any[];
   @Input() listSecondStep: any[];
   @Output() leagueSelected = new EventEmitter();
+  @Output() teamSelected = new EventEmitter();
   backupList: any[];
 
   constructor() {}
@@ -30,5 +31,9 @@ export class StepperComponent implements OnInit {
   goToNextStep(league, stepper: MatStepper) {
     this.leagueSelected.emit({leagueSelected: league.league.idLeague});
     stepper.next();
+  }
+
+  goToThirdStep(team, stepper: MatStepper) {
+    this.teamSelected.emit({teamSelected: team.team});
   }
 }

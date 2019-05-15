@@ -1,2 +1,6 @@
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 @import '../node_modules/font-awesome/css/font-awesome.css';
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing.dark-backdrop {
+  background: #000;
+  opacity: 0.75 !important;
+}

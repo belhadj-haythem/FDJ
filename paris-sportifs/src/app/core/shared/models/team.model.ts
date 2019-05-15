@@ -7,4 +7,6 @@ export interface Team {
   intStadiumCapacity: string;
   strTeamBadge: string;
   strTeamLogo: string;
+  intFormedYear: string;
+  strDescriptionEN: string;
 }

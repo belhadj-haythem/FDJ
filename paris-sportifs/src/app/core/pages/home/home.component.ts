@@ -1,20 +1,27 @@
+import { SpinnerService } from './../../shared/spinner.service';
 import { FootballService } from './../../shared/football.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { League } from '../../shared/models/league.model';
 import { first, filter, map, tap } from 'rxjs/operators';
+import { Team } from '../../shared/models/team.model';
 
 @Component({
   selector: 'fdj-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewChecked {
   leagueList: League[];
-  teams: any[];
-  constructor(private footballService: FootballService) {}
+  teams: Team[];
+  players: any[];
+  constructor(
+    private footballService: FootballService,
+    private spinnerService: SpinnerService
+  ) {}
 
   ngOnInit() {
     this.leagueList = [];
+    this.spinnerService.spin$.next(true);
     this.footballService
       .getAllLeagues()
       .pipe(map(leagueObject => leagueObject.leagues))
@@ -22,6 +29,10 @@ export class HomeComponent implements OnInit {
         result = result.filter(league => league.strLeague !== '_No League');
         this.getLeagueById(result);
       });
+  }
+
+  ngAfterViewChecked(): void {
+    this.spinnerService.spin$.next(false);
   }
 
   getLeagueById(res: League[]) {
@@ -61,6 +72,15 @@ export class HomeComponent implements OnInit {
       .pipe(map(teamObject => teamObject.teams))
       .subscribe(teams => {
         this.teams = teams;
+      });
+  }
+
+  getPlayersByTeamId(event) {
+    this.footballService
+      .getPlayersByTeamName(event.teamSelected.strTeam)
+      .pipe(map(playerObject => playerObject.player))
+      .subscribe(res => {
+        this.players = res;
       });
   }
 }
