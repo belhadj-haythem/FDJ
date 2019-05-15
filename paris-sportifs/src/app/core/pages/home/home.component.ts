@@ -69,6 +69,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
         });
       this.leagueList.push(league);
     });
+    console.log(this.leagueList);
   }
 
   getTeamsByLeagueId(event) {

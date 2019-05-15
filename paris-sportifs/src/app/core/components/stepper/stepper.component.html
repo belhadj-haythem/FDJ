@@ -2,7 +2,7 @@
   <mat-step>
     <form>
       <mat-form-field>
-        <input matInput [(ngModel)]="searchInput" placeholder="League name filter.." (keyup)="onKey($event)">
+        <input matInput name="filterLeague" [(ngModel)]="searchInput" placeholder="League name filter.." (keyup)="onKey($event)">
       </mat-form-field>
       &nbsp;
       <mat-form-field>
