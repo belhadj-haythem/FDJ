@@ -10,6 +10,7 @@ import { first, filter, map, tap } from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
   leagueList: League[];
+  teams: any[];
   constructor(private footballService: FootballService) {}
 
   ngOnInit() {
@@ -18,6 +19,7 @@ export class HomeComponent implements OnInit {
       .getAllLeagues()
       .pipe(map(leagueObject => leagueObject.leagues))
       .subscribe(result => {
+        result = result.filter(league => league.strLeague !== '_No League');
         this.getLeagueById(result);
       });
   }
@@ -30,7 +32,11 @@ export class HomeComponent implements OnInit {
         strSport: r.strSport,
         strLeagueAlternate: r.strLeagueAlternate,
         strLogo: '',
-        strDescriptionFR: ''
+        strDescriptionFR: '',
+        strWebsite: '',
+        strFacebook: '',
+        strTwitter: '',
+        strCountry: ''
       };
       this.footballService
         .getLeagueDetailsById(r.idLeague)
@@ -38,8 +44,21 @@ export class HomeComponent implements OnInit {
         .subscribe(res => {
           league.strLogo = res[0].strLogo;
           league.strDescriptionFR = res[0].strDescriptionFR;
+          league.strWebsite = res[0].strWebsite;
+          league.strFacebook = res[0].strFacebook;
+          league.strTwitter = res[0].strTwitter;
+          league.strCountry = res[0].strCountry;
         });
       this.leagueList.push(league);
     });
+  }
+
+  getTeamsByLeagueId(event) {
+    this.footballService
+      .getTeamsByLeagueId(event.leagueSelected)
+      .pipe(map(teamObject => teamObject.teams))
+      .subscribe(teams => {
+        this.teams = teams;
+      });
   }
 }

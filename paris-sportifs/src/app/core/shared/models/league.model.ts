@@ -5,4 +5,8 @@ export interface League {
   strLeagueAlternate: string;
   strLogo: string;
   strDescriptionFR: string;
+  strWebsite: string;
+  strFacebook: string;
+  strTwitter: string;
+  strCountry: string;
 }

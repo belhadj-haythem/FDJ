@@ -25,6 +25,11 @@ export class FootballService {
     return this.http.get(`${this.uri}/search_all_teams.php`, { params });
   }
 
+  public getTeamsByLeagueId(idLeague: string): Observable<any> {
+    const params = new HttpParams().set('id', idLeague);
+    return this.http.get(`${this.uri}/lookup_all_teams.php`, { params });
+  }
+
   public getPlayersByTeamId(id_team: string): Observable<any> {
     const params = new HttpParams().set('id', id_team);
     return this.http.get(`${this.uri}/lookup_all_players.php`, { params });

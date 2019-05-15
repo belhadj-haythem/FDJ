@@ -15,6 +15,9 @@ import { CardComponent } from './components/card/card.component';
 import {MatCardModule} from '@angular/material/card';
 import { FootballService } from './shared/football.service';
 import { HttpClientModule } from '@angular/common/http';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [ToolbarComponent, HomeComponent, StepperComponent, CardComponent],
@@ -30,7 +33,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
-    HttpClientModule
+    HttpClientModule,
+    MatGridListModule,
+    AngularFontAwesomeModule,
+    MatTableModule
   ],
   exports: [HomeComponent],
   providers: [FootballService]

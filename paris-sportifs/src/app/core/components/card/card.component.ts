@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { League } from '../../shared/models/league.model';
 
 @Component({
@@ -9,9 +9,13 @@ import { League } from '../../shared/models/league.model';
 export class CardComponent implements OnInit {
 
   @Input() league: League;
+  @Output() nextStep = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
   }
 
+  goToNextStep() {
+    this.nextStep.emit({ league: this.league });
+  }
 }
