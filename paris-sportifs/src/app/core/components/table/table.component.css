@@ -14,6 +14,10 @@ tr.team-row:not(.example-expanded-row):active {
   background: #efefef;
 }
 
+.team-row {
+  cursor: pointer !important;
+}
+
 .team-row td {
   border-bottom-width: 0;
 }
