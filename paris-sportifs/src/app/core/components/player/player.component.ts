@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { Player } from '../../shared/models/player.model';
+import { Player } from '@shared/models/player.model';
 
 @Component({
   selector: 'fdj-player',

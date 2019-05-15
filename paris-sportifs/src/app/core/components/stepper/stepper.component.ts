@@ -1,6 +1,6 @@
 import { MatStepper } from '@angular/material/stepper';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { League } from '../../shared/models/league.model';
+import { League } from '@shared/models/league.model';
 
 @Component({
   selector: 'fdj-stepper',
@@ -9,7 +9,7 @@ import { League } from '../../shared/models/league.model';
 })
 export class StepperComponent implements OnInit {
   isLinear = true;
-  searchInput: string;
+  searchInput = '';
   @Input() listFirstStep: any[];
   @Input() listSecondStep: any[];
   @Input() listLastStep: any[];
@@ -48,6 +48,7 @@ export class StepperComponent implements OnInit {
   }
 
   filterBySports(value) {
+    this.searchInput = '';
     this.listFirstStep = this.backupList;
     this.listFirstStep = this.listFirstStep.filter(s => s.strSport === value);
   }

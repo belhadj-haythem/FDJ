@@ -1,9 +1,9 @@
-import { SpinnerService } from './../../shared/spinner.service';
-import { FootballService } from './../../shared/football.service';
-import { Component, OnInit, AfterViewChecked } from '@angular/core';
-import { League } from '../../shared/models/league.model';
+import { SpinnerService } from '@shared/spinner.service';
+import { FootballService } from '@shared/football.service';
+import { OnInit, AfterViewChecked, Component } from '@angular/core';
+import { League } from '@shared/models/league.model';
 import { first, filter, map, tap } from 'rxjs/operators';
-import { Team } from '../../shared/models/team.model';
+import { Team } from '@shared/models/team.model';
 
 @Component({
   selector: 'fdj-home',

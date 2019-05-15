@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { League } from '../../shared/models/league.model';
+import { League } from '@shared/models/league.model';
 
 @Component({
   selector: 'fdj-card',

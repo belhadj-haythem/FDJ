@@ -13,7 +13,7 @@ import {
   transition,
   trigger
 } from '@angular/animations';
-import { Team } from '../../shared/models/team.model';
+import { Team } from '@shared/models/team.model';
 import { MatSnackBar } from '@angular/material';
 
 @Component({
