@@ -1,2 +1,3 @@
 <fdj-toolbar></fdj-toolbar>
-<fdj-stepper [listFirstStep]='leagueList' [listSecondStep]="teams" [listLastStep]="players" (leagueSelected)="getTeamsByLeagueId($event)" (teamSelected)="getPlayersByTeamId($event)"></fdj-stepper>
+<fdj-stepper [sports]="sports" [listFirstStep]='leagueList' [listSecondStep]="teams" [listLastStep]="players"
+  (leagueSelected)="getTeamsByLeagueId($event)" (teamSelected)="getPlayersByTeamId($event)"></fdj-stepper>

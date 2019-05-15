@@ -2,7 +2,16 @@
   <mat-step>
     <form>
       <mat-form-field>
-        <input matInput placeholder="Filtrer les ligues" value (keyup)="onKey($event)">
+        <input matInput placeholder="League name filter.." value (keyup)="onKey($event)">
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field>
+        <mat-label>Sports filter..</mat-label>
+        <mat-select [(value)]="defaultSport" (selectionChange)="filterBySports($event.value)">
+          <mat-option *ngFor="let sport of sports" [value]="sport">
+            {{sport}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
     </form>
     <ng-template matStepLabel>League Selection</ng-template>
@@ -18,11 +27,12 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Players list</ng-template>
+    <button mat-raised-button color="basic" (click)="stepper.reset()">Reset Search</button>
     <mat-grid-list cols="4" rowHeight="500px">
-        <mat-grid-tile *ngFor="let player of listLastStep">
-            <fdj-player [player]="player"></fdj-player>
-        </mat-grid-tile>
-      </mat-grid-list>
+      <mat-grid-tile *ngFor="let player of listLastStep">
+        <fdj-player [player]="player"></fdj-player>
+      </mat-grid-tile>
+    </mat-grid-list>
 
   </mat-step>
 </mat-horizontal-stepper>

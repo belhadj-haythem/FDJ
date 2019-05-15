@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
   leagueList: League[];
   teams: Team[];
   players: any[];
+  sports: any[];
   constructor(
     private footballService: FootballService,
     private spinnerService: SpinnerService
@@ -21,6 +22,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
 
   ngOnInit() {
     this.leagueList = [];
+    this.sports = [];
     this.spinnerService.spin$.next(true);
     this.footballService
       .getAllLeagues()
@@ -61,6 +63,9 @@ export class HomeComponent implements OnInit, AfterViewChecked {
           league.strFacebook = res[0].strFacebook;
           league.strTwitter = res[0].strTwitter;
           league.strCountry = res[0].strCountry;
+          if (!this.sports.includes(res[0].strSport)) {
+            this.sports.push(res[0].strSport);
+          }
         });
       this.leagueList.push(league);
     });

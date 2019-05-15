@@ -13,9 +13,11 @@ export class StepperComponent implements OnInit {
   @Input() listFirstStep: any[];
   @Input() listSecondStep: any[];
   @Input() listLastStep: any[];
+  @Input() sports: any[];
   @Output() leagueSelected = new EventEmitter();
   @Output() teamSelected = new EventEmitter();
   backupList: any[];
+  defaultSport = '';
 
   constructor() {}
 
@@ -24,6 +26,7 @@ export class StepperComponent implements OnInit {
   }
 
   onKey(event: any) {
+    this.defaultSport = '';
     this.listFirstStep = this.backupList;
     this.listFirstStep = this.listFirstStep.filter(element =>
       element.strLeague.toLowerCase().includes(event.target.value.toLowerCase())
@@ -42,5 +45,10 @@ export class StepperComponent implements OnInit {
     } else {
       stepper.previous();
     }
+  }
+
+  filterBySports(value) {
+    this.listFirstStep = this.backupList;
+    this.listFirstStep = this.listFirstStep.filter(s => s.strSport === value);
   }
 }
