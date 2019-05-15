@@ -8,7 +8,6 @@ import { League } from '../../shared/models/league.model';
   styleUrls: ['./stepper.component.css']
 })
 export class StepperComponent implements OnInit {
-
   isLinear = true;
   searchInput: string;
   @Input() listFirstStep: any[];
@@ -25,15 +24,18 @@ export class StepperComponent implements OnInit {
 
   onKey(event: any) {
     this.listFirstStep = this.backupList;
-    this.listFirstStep = this.listFirstStep.filter((element) => element.strLeague.toLowerCase().includes(event.target.value.toLowerCase()));
+    this.listFirstStep = this.listFirstStep.filter(element =>
+      element.strLeague.toLowerCase().includes(event.target.value.toLowerCase())
+    );
   }
 
   goToNextStep(league, stepper: MatStepper) {
-    this.leagueSelected.emit({leagueSelected: league.league.idLeague});
+    this.leagueSelected.emit({ leagueSelected: league.league.idLeague });
     stepper.next();
   }
 
   goToThirdStep(team, stepper: MatStepper) {
-    this.teamSelected.emit({teamSelected: team.team});
+    this.teamSelected.emit({ teamSelected: team.team });
+    stepper.next();
   }
 }

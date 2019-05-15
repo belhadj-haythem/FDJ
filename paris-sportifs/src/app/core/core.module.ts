@@ -21,6 +21,7 @@ import { MatTableModule } from '@angular/material/table';
 import { TableComponent } from './components/table/table.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { PlayerComponent } from './components/player/player.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { OverlayModule } from '@angular/cdk/overlay';
     HomeComponent,
     StepperComponent,
     CardComponent,
-    TableComponent
+    TableComponent,
+    PlayerComponent
   ],
   imports: [
     CommonModule,

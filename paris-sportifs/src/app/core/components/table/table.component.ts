@@ -28,7 +28,13 @@ import { Team } from '../../shared/models/team.model';
 })
 export class TableComponent implements OnInit {
   @Input() data: any;
-  columnsToDisplay = ['strTeamBadge', 'strTeam', 'intFormedYear', 'strStadium', 'intStadiumCapacity'];
+  columnsToDisplay = [
+    'strTeamBadge',
+    'strTeam',
+    'intFormedYear',
+    'strStadium',
+    'intStadiumCapacity'
+  ];
   expandedElement: Team | null;
 
   ELEMENT_DATA: Team[] = [];
@@ -44,6 +50,6 @@ export class TableComponent implements OnInit {
   }
 
   goToNextStep() {
-    this.nextStep.emit({team: this.expandedElement});
+    this.nextStep.emit({ team: this.expandedElement });
   }
 }

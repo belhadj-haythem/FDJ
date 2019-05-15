@@ -11,8 +11,7 @@ export class FootballService {
   constructor(private http: HttpClient) {}
 
   public getAllLeagues(): Observable<any> {
-    return this.http
-      .get(`${this.uri}/all_leagues.php`);
+    return this.http.get(`${this.uri}/all_leagues.php`);
   }
 
   public getLeagueDetailsById(idLeague: string): Observable<any> {
