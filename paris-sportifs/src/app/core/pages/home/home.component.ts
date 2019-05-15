@@ -36,13 +36,15 @@ export class HomeComponent implements OnInit {
         strWebsite: '',
         strFacebook: '',
         strTwitter: '',
-        strCountry: ''
+        strCountry: '',
+        strBadge: ''
       };
       this.footballService
         .getLeagueDetailsById(r.idLeague)
         .pipe(map(leagueObject => leagueObject.leagues))
         .subscribe(res => {
           league.strLogo = res[0].strLogo;
+          league.strBadge = res[0].strBadge;
           league.strDescriptionFR = res[0].strDescriptionFR;
           league.strWebsite = res[0].strWebsite;
           league.strFacebook = res[0].strFacebook;

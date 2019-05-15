@@ -1,68 +1,31 @@
-<mat-horizontal-stepper
-    [linear]="isLinear"
-    #stepper
->
-    <mat-step>
-        <form>
-            <mat-form-field>
-                <input
-                    matInput
-                    placeholder="Filtrer les ligues"
-                    value
-                    (keyup)="onKey($event)"
-                >
-            </mat-form-field>
-        </form>
-        <ng-template matStepLabel>Sélectionnez la ligue</ng-template>
-        <mat-grid-list
-            cols="2"
-            rowHeight="2:1"
-        >
-            <mat-grid-tile *ngFor="let league of listFirstStep">
-                <fdj-card
-                    [league]='league'
-                    (nextStep)='goToNextStep($event, stepper)'
-                ></fdj-card>
-            </mat-grid-tile>
-            <br>
-            <br>
-            <br>
-        </mat-grid-list>
-    </mat-step>
-    <mat-step>
-        <ng-template matStepLabel>Séléctionnez l'équipe</ng-template>
-        {{listSecondStep}}
-        <div>
-            <button
-                mat-raised-button
-                matStepperPrevious
-            >
-                Back
-            </button>
-            <button
-                mat-raised-button
-                matStepperNext
-            >
-                Next
-            </button>
-        </div>
-    </mat-step>
-    <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        You are now done.
-        <div>
-            <button
-                mat-button
-                matStepperPrevious
-            >
-                Back
-            </button>
-            <button
-                mat-button
-                (click)="stepper.reset()"
-            >
-                Reset
-            </button>
-        </div>
-    </mat-step>
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step>
+    <form>
+      <mat-form-field>
+        <input matInput placeholder="Filtrer les ligues" value (keyup)="onKey($event)">
+      </mat-form-field>
+    </form>
+    <ng-template matStepLabel>Sélectionnez la ligue</ng-template>
+    <mat-grid-list cols="4" rowHeight="4:4">
+      <mat-grid-tile *ngFor="let league of listFirstStep">
+        <fdj-card [league]='league' (nextStep)='goToNextStep($event, stepper)'></fdj-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Séléctionnez l'équipe</ng-template>
+    <fdj-table [data]="listSecondStep"></fdj-table>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>
+        Back
+      </button>
+      <button mat-button (click)="stepper.reset()">
+        Reset
+      </button>
+    </div>
+  </mat-step>
 </mat-horizontal-stepper>

@@ -18,9 +18,10 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import {MatTableModule} from '@angular/material/table';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
-  declarations: [ToolbarComponent, HomeComponent, StepperComponent, CardComponent],
+  declarations: [ToolbarComponent, HomeComponent, StepperComponent, CardComponent, TableComponent],
   imports: [
     CommonModule,
     MatToolbarModule,

@@ -9,4 +9,5 @@ export interface League {
   strFacebook: string;
   strTwitter: string;
   strCountry: string;
+  strBadge: string;
 }
