@@ -12,6 +12,7 @@ export class StepperComponent implements OnInit {
   searchInput: string;
   @Input() listFirstStep: any[];
   @Input() listSecondStep: any[];
+  @Input() listLastStep: any[];
   @Output() leagueSelected = new EventEmitter();
   @Output() teamSelected = new EventEmitter();
   backupList: any[];
@@ -35,7 +36,11 @@ export class StepperComponent implements OnInit {
   }
 
   goToThirdStep(team, stepper: MatStepper) {
-    this.teamSelected.emit({ teamSelected: team.team });
-    stepper.next();
+    if (team && team.team) {
+      this.teamSelected.emit({ teamSelected: team.team });
+      stepper.next();
+    } else {
+      stepper.previous();
+    }
   }
 }

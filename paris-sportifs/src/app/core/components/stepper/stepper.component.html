@@ -5,7 +5,7 @@
         <input matInput placeholder="Filtrer les ligues" value (keyup)="onKey($event)">
       </mat-form-field>
     </form>
-    <ng-template matStepLabel>Sélectionnez la ligue</ng-template>
+    <ng-template matStepLabel>League Selection</ng-template>
     <mat-grid-list cols="4" rowHeight="4:4">
       <mat-grid-tile *ngFor="let league of listFirstStep">
         <fdj-card [league]='league' (nextStep)='goToNextStep($event, stepper)'></fdj-card>
@@ -13,19 +13,16 @@
     </mat-grid-list>
   </mat-step>
   <mat-step>
-    <ng-template matStepLabel>Séléctionnez l'équipe</ng-template>
+    <ng-template matStepLabel>Team Selection</ng-template>
     <fdj-table [data]="listSecondStep" (nextStep)='goToThirdStep($event, stepper)'></fdj-table>
   </mat-step>
   <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    You are now done.
-    <div>
-      <button mat-button matStepperPrevious>
-        Back
-      </button>
-      <button mat-button (click)="stepper.reset()">
-        Reset
-      </button>
-    </div>
+    <ng-template matStepLabel>Players list</ng-template>
+    <mat-grid-list cols="4" rowHeight="500px">
+        <mat-grid-tile *ngFor="let player of listLastStep">
+            <fdj-player [player]="player"></fdj-player>
+        </mat-grid-tile>
+      </mat-grid-list>
+
   </mat-step>
 </mat-horizontal-stepper>

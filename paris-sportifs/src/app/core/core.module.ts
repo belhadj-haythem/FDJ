@@ -22,6 +22,7 @@ import { TableComponent } from './components/table/table.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PlayerComponent } from './components/player/player.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { PlayerComponent } from './components/player/player.component';
     AngularFontAwesomeModule,
     MatTableModule,
     MatProgressSpinnerModule,
-    OverlayModule
+    OverlayModule,
+    MatSnackBarModule
   ],
   exports: [HomeComponent],
   providers: [FootballService],

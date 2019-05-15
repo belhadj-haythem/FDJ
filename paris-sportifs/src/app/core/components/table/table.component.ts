@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges
+} from '@angular/core';
 import {
   animate,
   state,
@@ -7,6 +14,7 @@ import {
   trigger
 } from '@angular/animations';
 import { Team } from '../../shared/models/team.model';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'fdj-table',
@@ -26,7 +34,7 @@ import { Team } from '../../shared/models/team.model';
     ])
   ]
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, OnChanges {
   @Input() data: any;
   columnsToDisplay = [
     'strTeamBadge',
@@ -41,12 +49,19 @@ export class TableComponent implements OnInit {
   dataSource = this.data || this.ELEMENT_DATA;
   @Output() nextStep = new EventEmitter();
 
-  constructor() {}
+  constructor(private snackBar: MatSnackBar) {}
 
   ngOnInit() {}
 
   ngOnChanges() {
-    this.dataSource = this.data;
+    if (this.data === null) {
+      this.snackBar.open('No Teams available', 'OK', {
+        duration: 4000
+      });
+      this.nextStep.emit({ team: null });
+    } else {
+      this.dataSource = this.data;
+    }
   }
 
   goToNextStep() {

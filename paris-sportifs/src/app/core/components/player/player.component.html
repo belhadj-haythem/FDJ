@@ -1,3 +1,15 @@
-<p>
-  player works!
-</p>
+<mat-card class="player-card">
+  <mat-card-header>
+    <mat-card-title>{{player.strPlayer}}</mat-card-title>
+    <mat-card-subtitle>{{player.strPosition}} - {{player.strNationality}}</mat-card-subtitle>
+  </mat-card-header>
+  <img *ngIf="player.strCutout else noImage" class="image" mat-card-image src="{{player.strCutout}}"
+    alt="Photo of {{player.strPlayer}}">
+  <ng-template #noImage>
+    <img class="image" src="../../../../assets/images/no_image.png" width="270">
+  </ng-template>
+  <mat-card-content style="display: inline-block;">
+    <span><b>Price </b> : {{player.strSigning}}</span>
+    <span *ngIf="player.dateBorn"><b>Birth date </b> : {{player.dateBorn}}</span>
+  </mat-card-content>
+</mat-card>

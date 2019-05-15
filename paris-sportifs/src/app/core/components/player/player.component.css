@@ -1,0 +1,11 @@
+.player-card {
+  max-width: 270px;
+}
+
+.image {
+  object-fit: contain;
+}
+
+mat-card-content span {
+  display: flex;
+}
