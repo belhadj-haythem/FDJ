@@ -6,7 +6,12 @@ import { MatSpinner } from '@angular/material';
 
 import { Subject } from 'rxjs';
 import { scan, map, mergeMap } from 'rxjs/operators';
-
+/**
+ * Spinner service for generating an overlay with Mat Spinner for loading before data generation
+ *
+ * @export
+ * @class SpinnerService
+ */
 @Injectable({
   providedIn: 'root'
 })

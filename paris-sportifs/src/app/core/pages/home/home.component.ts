@@ -4,7 +4,14 @@ import { OnInit, AfterViewChecked, Component } from '@angular/core';
 import { League } from '@shared/models/league.model';
 import { first, filter, map, tap } from 'rxjs/operators';
 import { Team } from '@shared/models/team.model';
-
+/**
+ * Main home page
+ *
+ * @export
+ * @class HomeComponent
+ * @implements {OnInit}
+ * @implements {AfterViewChecked}
+ */
 @Component({
   selector: 'fdj-home',
   templateUrl: './home.component.html',
@@ -33,10 +40,17 @@ export class HomeComponent implements OnInit, AfterViewChecked {
       });
   }
 
+  /**
+   * Detecting view loaded for disabling the spinner and the overlay
+   */
   ngAfterViewChecked(): void {
     this.spinnerService.spin$.next(false);
   }
 
+  /**
+   * subscribing to league details and filling the main league list
+   * by creating league objects and filling attributes
+   */
   getLeagueById(res: League[]) {
     res.forEach(r => {
       const league: League = {
@@ -69,9 +83,14 @@ export class HomeComponent implements OnInit, AfterViewChecked {
         });
       this.leagueList.push(league);
     });
-    console.log(this.leagueList);
   }
 
+  /**
+   * Getting teams from specific league and subscribing to fill main teams
+   * teams will be passed as an input for stepper component
+   * @param event
+   * event param is an output from child component
+   */
   getTeamsByLeagueId(event) {
     this.footballService
       .getTeamsByLeagueId(event.leagueSelected)
@@ -81,6 +100,12 @@ export class HomeComponent implements OnInit, AfterViewChecked {
       });
   }
 
+  /**
+   * Getting players from specific team and subscribing to fill players that will be listing
+   * players will be passed as an input for stepper component
+   * @param event
+   * event param is an output from child component
+   */
   getPlayersByTeamId(event) {
     this.footballService
       .getPlayersByTeamName(event.teamSelected.strTeam)

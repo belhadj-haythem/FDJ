@@ -15,7 +15,15 @@ import {
 } from '@angular/animations';
 import { Team } from '@shared/models/team.model';
 import { MatSnackBar } from '@angular/material';
-
+/**
+ * Component for listing the list of teams in a table
+ * Displaying with expand/collapse animation for rows(teams)
+ *
+ * @export
+ * @class TableComponent
+ * @implements {OnInit}
+ * @implements {OnChanges}
+ */
 @Component({
   selector: 'fdj-table',
   templateUrl: './table.component.html',
